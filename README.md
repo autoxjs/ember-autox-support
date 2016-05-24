@@ -2,6 +2,21 @@
 
 This README outlines the details of collaborating on this Ember addon.
 
+## Requirements
+This library just ships with mixins, some utils, and some default dataviews.
+
+During runtime, you'll need to have the following installed to properly use
+```sh
+ember-polymorphica
+ember-router-dsl
+ember-autox-core
+ember-dataview
+ember-annotative-models
+ember-lodash
+ember-concurrency
+ember-getowner-polyfill
+```
+
 ## Installation
 
 * `git clone` this repository

@@ -1,0 +1,10 @@
+<h1 class="page-title">Show Horse</h1>
+<ul class="display">
+  <li class="display__factory">{{model.record.constructor.modelName}}</li>
+
+  {{#each model.fields as |field|}}
+    <li class="display__{{field.name}}">
+      {{get model.record field.name}}
+    </li>
+  {{/each}}
+</ul>

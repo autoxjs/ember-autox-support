@@ -1,0 +1,14 @@
+<ul class="display">
+  <li class="display__factory">{{model.record.constructor.modelName}}</li>
+
+  {{#each model.fields as |field|}}
+    <li class="display__{{field.name}}">
+      {{get model.record field.name}}
+    </li>
+  {{/each}}
+</ul>
+<form {{action (route-action "modelCreated") model.record on="submit"}}>
+  {{one-way-text model.record.name name="name" update=(action (mut model.record.name))}}
+  {{one-way-text model.record.breed name="breed" update=(action (mut model.record.breed))}}
+  <button type="submit">Submit</button>
+</form>
