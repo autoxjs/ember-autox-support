@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-AutoxRouteModelMixin = Ember.Mixin.create
+AutoxRouteCollectionMixin = Ember.Mixin.create
   model: (params) ->
     @get("dataviews").eagerLoad @routeName,
       modelName: @get("defaultModelName")
@@ -10,4 +10,4 @@ AutoxRouteModelMixin = Ember.Mixin.create
       params: params
       original: @_super arguments...
 
-`export default AutoxRouteModelMixin`
+`export default AutoxRouteCollectionMixin`
