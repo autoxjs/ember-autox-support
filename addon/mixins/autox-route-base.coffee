@@ -46,9 +46,9 @@ AutoxRouteBaseMixin = Ember.Mixin.create
   model: (params) ->
     {modelLoaders, routeAction} = @getProperties "modelLoaders", "routeAction"
     return @_super(arguments...) if isBlank(routeAction) or isBlank(modelLoaders)
-    for f in modelLoaders when isBlank(model)
-      model = f.call @, params
-    model ? @_super(arguments...)
+    for f in modelLoaders
+      return model if (model = f.call @, params)?
+    @_super(arguments...)
 
   afterModel: (model) ->
     return unless typeOf model in ["object", "array", "instance"]

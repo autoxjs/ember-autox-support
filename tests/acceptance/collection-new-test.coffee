@@ -3,13 +3,15 @@
 `import moduleForAcceptance from '../../tests/helpers/module-for-acceptance'`
 `import NewPage from 'dummy/tests/pages/dashboard/horses/new'`
 `import IndexPage from 'dummy/tests/pages/dashboard/horse/index'`
-
+`import AutoxBaseDataview from 'ember-autox-support/dataviews/autox-base'`
 moduleForAcceptance 'Acceptance: CollectionNew'
 
 test 'visiting /dashboard/horses/new', (assert) ->
   container = @application.__container__
+  dataviews = container.lookup("service:dataviews")
+  assert.equal dataviews.get("defaultViewFactory"), AutoxBaseDataview,
+    "we should have the correct view factory"
   NewPage.visit()
-
   andThen ->
     route = container.lookup "route:dashboard/horses/new"
     assert.ok route, "the horse route should be found"

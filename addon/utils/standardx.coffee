@@ -8,9 +8,9 @@ Standardx =
   model:
     routeMixins: [AutoxRouteBase, AutoxRouteModel]
   children:
-    routeMixins: [AutoxRouteBase]
+    routeMixins: [AutoxRouteBase, AutoxRouteCollection]
   child:
-    routeMixins: [AutoxRouteBase]
+    routeMixins: [AutoxRouteBase, AutoxRouteModel]
   view:
     routeMixins: [AutoxRouteBase]
   form:
