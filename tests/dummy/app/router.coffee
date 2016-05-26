@@ -12,6 +12,7 @@ Router.map ->
   namespace "dashboard", ->
     collection "horses", ->
       form "new"
-    model "horse"
+    model "horse", ->
+      form "edit"
 
 `export default Router`

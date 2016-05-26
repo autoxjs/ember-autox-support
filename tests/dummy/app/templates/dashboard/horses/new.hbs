@@ -1,14 +1,18 @@
 <ul class="display">
-  <li class="display__factory">{{model.record.constructor.modelName}}</li>
+  <li class="display__factory">
+    <strong>modelName</strong>
+    <span>{{model.constructor.modelName}}</span>
+  </li>
 
-  {{#each model.fields as |field|}}
+  {{#each dataview.fields as |field|}}
     <li class="display__{{field.name}}">
-      {{get model.record field.name}}
+      <strong>{{field.name}}</strong>
+      <span>{{get model field.name}}</span>
     </li>
   {{/each}}
 </ul>
-<form {{action (route-action "modelCreated") model.record on="submit"}}>
-  {{one-way-text model.record.name name="name" update=(action (mut model.record.name))}}
-  {{one-way-text model.record.breed name="breed" update=(action (mut model.record.breed))}}
+<form {{action (route-action "persistModel") model on="submit"}}>
+  {{one-way-text model.name name="name" update=(action (mut model.name))}}
+  {{one-way-text model.breed name="breed" update=(action (mut model.breed))}}
   <button type="submit">Submit</button>
 </form>

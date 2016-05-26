@@ -1,3 +1,12 @@
-<h2 id="title">Welcome to Ember</h2>
-
+<nav>
+  {{#link-to "index"}}
+    Home
+  {{/link-to}}
+  {{#link-to "dashboard.horses.index"}}
+    Horses
+  {{/link-to}}
+  {{#link-to "dashboard.horses.new"}}
+    New Horses
+  {{/link-to}}
+</nav>
 {{outlet}}

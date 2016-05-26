@@ -1,0 +1,6 @@
+<h1 class="page-title">Edit Horse</h1>
+<form {{action (route-action "persistModel") model on="submit"}}>
+  {{one-way-text model.name name="name" update=(action (mut model.name))}}
+  {{one-way-text model.breed name="breed" update=(action (mut model.breed))}}
+  <button type="submit">Submit</button>
+</form>

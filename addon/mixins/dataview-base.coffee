@@ -1,10 +1,12 @@
 `import Ember from 'ember'`
+`import loadFields from '../utils/load-fields'`
 
-{computed: {alias}} = Ember
 DataviewBaseMixin = Ember.Mixin.create
-  record: alias "model.record"
-  records: alias "model.records"
-  fields: alias "model.fields"
-  metadata: alias "model.metadata"
+  mergedProperties: ['loads']
+
+  loads:
+    fields: (metadata) ->
+      loadFields(@get("store"), metadata.model, metadata)
+    metadata: (data) -> data
 
 `export default DataviewBaseMixin`

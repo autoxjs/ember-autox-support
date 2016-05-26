@@ -1,6 +1,6 @@
 <h1 class="page-title">Horses</h1>
 <ul class="horses">
-  {{#each model.records as |horse|}}
+  {{#each model as |horse|}}
     <li>
       <span>
         {{horse.constructor.modelName}}
@@ -18,9 +18,12 @@
   {{/each}}
 </ul>
 <ol class="fields">
-  {{#each model.fields as |field|}}
+  {{#each dataview.fields as |field|}}
     <li>
       <span>{{field.name}}</span>
     </li>
   {{/each}}
 </ol>
+{{#link-to "dashboard.horses.new"}}
+  New Horse
+{{/link-to}}

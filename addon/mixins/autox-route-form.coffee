@@ -1,30 +1,34 @@
 `import Ember from 'ember'`
 `import _x from 'ember-autox-core/utils/xdash'`
+`import defaultNewParams from '../utils/default-new-params'`
 {isntModel} = _x
 {isPresent} = Ember
+
+createModel = (params) ->
+  return unless @get("routeAction") is 'collection#new'
+  @store.createRecord @get("defaultModelName"), params
+
+createChild = (params) ->
+  return unless @get("routeAction") is 'children#new'
+  [..., relationName, _new] = @routeName.split(".")
+  modelName = @get("defaultModelName")
+  parent = @parentNodeModel()
+  @store.createRecord modelName, defaultNewParams(relationName, parent, params)
+
 AutoxRouteFormMixin = Ember.Mixin.create
+  modelLoaders: [createModel, createChild]
+
   deactivate: ->
-    dataview = @get("controller.model")
-    model = @get("controller.model.value")
+    model = @get("controller.model")
     return if isntModel(model)
-    dataview.reset()
     model.rollbackAttributes() if model?.get "hasDirtyAttributes"
     @_super arguments...
 
-  model: (params) ->
-    @get("dataviews").eagerLoad @routeName,
-      modelName: @get("defaultModelName")
-      modelPath: @defaultModelShowPath()
-      routeAction: @get("routeAction")
-      routeName: @routeName
-      parent: @parentNodeModel()
-      params: params
-      original: @_super(arguments...)
-
   actions:
-    modelCreated: (model) ->
+    persistModel: (model) ->
       model.save()
       .then =>
         path = @defaultModelShowPath(model.constructor)
         @transitionTo path, model if isPresent path
+
 `export default AutoxRouteFormMixin`
