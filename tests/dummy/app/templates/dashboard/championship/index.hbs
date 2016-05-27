@@ -1,0 +1,13 @@
+<h1 class="page-title">
+  Championship
+</h1>
+
+<ul>
+  <li class="display__id">{{model.id}}</li>
+  <li class="display__horse-id">{{model.horse.id}}</li>
+  <li class="display__name">{{model.name}}</li>
+</ul>
+
+{{#link-to "dashboard.horse.index" model.horse class="xxx"}}
+  Goto Horse
+{{/link-to}}

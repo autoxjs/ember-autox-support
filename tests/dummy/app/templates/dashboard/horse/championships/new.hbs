@@ -1,0 +1,4 @@
+<form {{action (route-action "persistModel") model on="submit"}}>
+  {{one-way-text model.name name="name" update=(action (mut model.name))}}
+  <button type="submit">Submit</button>
+</form>

@@ -14,7 +14,8 @@ Router.map ->
       form "new"
     model "horse", ->
       form "edit"
-      children "championships"
+      children "championships", ->
+        form "new"
     model "championship"
 
 `export default Router`

@@ -20,7 +20,7 @@ module.exports = function(environment) {
   };
 
   ENV.coffeeOptions = {
-    blueprints: false
+    blueprints: true
   };
 
   if (environment === 'development') {
