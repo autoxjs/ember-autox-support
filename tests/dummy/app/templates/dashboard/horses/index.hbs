@@ -19,9 +19,11 @@
 </ul>
 <ol class="fields">
   {{#each dataview.fields as |field|}}
-    <li>
-      <span>{{field.name}}</span>
-    </li>
+    {{#if field.canDisplay}}
+      <li>
+        <span>{{field.name}}</span>
+      </li>
+    {{/if}}
   {{/each}}
 </ol>
 {{#link-to "dashboard.horses.new"}}

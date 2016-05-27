@@ -1,0 +1,15 @@
+<h1 class="page-title">
+  Horse Championships
+</h1>
+
+<ul class="championships">
+  {{#each model as |championship|}}
+    <li>
+      <span>{{championship.id}}</span>
+      <span>{{championship.name}}</span>
+      {{#link-to "dashboard.championship.index" championship}}
+        See Details
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>

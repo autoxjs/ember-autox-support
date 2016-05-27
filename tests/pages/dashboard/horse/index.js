@@ -12,5 +12,6 @@ export default create({
   id: text('li.display__id'),
   name: text('li.display__name'),
   breed: text('li.display__breed'),
-  goEdit: clickable('a[href$="edit"]')
+  goEdit: clickable('a[href$="edit"]'),
+  goChampionships: clickable('a[href$="championships"]')
 });

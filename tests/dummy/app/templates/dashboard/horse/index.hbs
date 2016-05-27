@@ -2,12 +2,18 @@
 <ul class="display">
   <li class="display__factory">{{model.constructor.modelName}}</li>
   {{#each dataview.fields as |field|}}
-    <li class="display__{{field.name}}">
-      {{get model field.name}}
-    </li>
+    {{#if field.canDisplay}}
+      <li class="display__{{field.name}}">
+        {{get model field.name}}
+      </li>
+    {{/if}}
   {{/each}}
 </ul>
 
 {{#link-to "dashboard.horse.edit" model}}
   Edit Horse
+{{/link-to}}
+
+{{#link-to "dashboard.horse.championships" model}}
+  Championships
 {{/link-to}}

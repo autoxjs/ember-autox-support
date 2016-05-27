@@ -13,4 +13,14 @@ Horse = DS.Model.extend
     display: ["show", "index"]
     modify: ["new"]
 
+  owner: DS.belongsTo "owner",
+    label: "Owner"
+    description: "The person or corporation which owns this horse"
+    async: true
+
+  championships: DS.hasMany "championship",
+    label: "Victorious Championships"
+    description: "The races where this horse has taken first place"
+    async: true
+
 `export default Horse`

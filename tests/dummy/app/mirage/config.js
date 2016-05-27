@@ -19,6 +19,18 @@ export default function() {
   this.post("/horses", "horse");
   this.put("/horses/:id", "horse");
   this.del("/horses/:id", "horse");
+
+  this.get("/owners", "owners");
+  this.get("/owners/:id", "owner");
+  this.post("/owners", "owner");
+  this.put("/owners/:id", "owner");
+  this.del("/owners/:id", "owner");
+
+  this.get("/championships", "championships");
+  this.get("/championships/:id", "championship");
+  this.post("/championships", "championship");
+  this.put("/championships/:id", "championship");
+  this.del("/championships/:id", "championship");
   /*
     GET shorthands
 
