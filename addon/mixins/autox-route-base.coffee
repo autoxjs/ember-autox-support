@@ -8,10 +8,6 @@ assertRoute = (router, name) ->
     throw new Error """In the route for you tried to pass off '#{name}'
     as a route, but it wasn't one. Fix it, dumbass"""
 
-xx = (x) ->
-  console.log x
-  x
-
 AutoxRouteBaseMixin = Ember.Mixin.create
   concatenatedProperties: ["modelLoaders"]
   routeData: service "route-data"
@@ -45,13 +41,13 @@ AutoxRouteBaseMixin = Ember.Mixin.create
 
   model: (params) ->
     {modelLoaders, routeAction} = @getProperties "modelLoaders", "routeAction"
-    return @_super(arguments...) if isBlank(routeAction) or isBlank(modelLoaders)
-    for f in modelLoaders
-      return model if (model = f.call @, params)?
-    @_super(arguments...)
+    original = @_super arguments...
+    return original if isBlank(routeAction) or isBlank(modelLoaders)
+    return model for f in modelLoaders when (model = f.call @, params, original)?
+    original
 
   afterModel: (model) ->
-    return unless typeOf model in ["object", "array", "instance"]
+    return unless model? and typeOf model in ["object", "array", "instance"]
     @get("dataviews").eagerLoad @routeName,
       model: model
       modelName: @get("defaultModelName")
@@ -62,7 +58,7 @@ AutoxRouteBaseMixin = Ember.Mixin.create
     .then (dataview) =>
       set model, @get("autoxTempStorageName"), dataview
 
-  setupController: (controller, model) ->
+  setupController: (controller, model={}) ->
     dataview = get model, @get("autoxTempStorageName")
     controller.set "dataview", dataview
     @_super controller, model

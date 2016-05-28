@@ -14,6 +14,7 @@ Router.map ->
       form "new"
     model "horse", ->
       form "edit"
+      child "owner"
       children "championships", ->
         form "new"
     model "championship"
