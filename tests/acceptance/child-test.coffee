@@ -21,7 +21,7 @@ test 'visiting /child', (assert) ->
     ShowPage.goOwner()
 
   andThen =>
-    assert.equal currentPath(), "dashboard.horse.owner",
+    assert.equal currentURL(), "/dashboard/horse/#{@horse.id}/owner",
       "we should be on the owner"
 
     assert.equal OwnerPage.pageTitle, "Horse Owner",

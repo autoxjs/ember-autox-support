@@ -1,4 +1,4 @@
-<h1 class="page-title">Show Horse</h1>
+<h1 class="page-title">Show Owner</h1>
 <div class="action-group">
   {{#each (filter-by "isAction" dataview.fields) as |field|}}
     {{#if (and field.canDisplay field.when)}}
@@ -19,18 +19,6 @@
   {{/each}}
 </ul>
 
-{{#link-to "dashboard.horse.edit" model}}
-  Edit Horse
-{{/link-to}}
-
-{{#link-to "dashboard.horse.championships" model}}
-  Championships
-{{/link-to}}
-
-{{#link-to "dashboard.horse.championships.new" model}}
-  New Championships
-{{/link-to}}
-
-{{#link-to "dashboard.horse.owner" model class="belongs-to"}}
-  Owner#{{model.id}}
+{{#link-to "dashboard.owner.horses" model class="my-horses"}}
+  Owner's Horses
 {{/link-to}}

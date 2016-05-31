@@ -10,6 +10,8 @@ Router.map ->
   {namespace, collection, form, view, model, child, children} = DSL.import(@).with Standardx
 
   namespace "dashboard", ->
+    model "owner", ->
+      children "horses"
     collection "horses", ->
       form "new"
     model "horse", ->

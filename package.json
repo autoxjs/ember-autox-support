@@ -52,6 +52,7 @@
     "ember-resolver": "^2.0.3",
     "ember-route-action-helper": "0.3.1",
     "ember-router-dsl": "0.1.1",
+    "ember-truth-helpers": "1.2.0",
     "ember-try": "^0.2.2",
     "loader.js": "^4.0.1"
   },

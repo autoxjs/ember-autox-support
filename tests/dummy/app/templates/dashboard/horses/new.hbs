@@ -4,7 +4,7 @@
     <span>{{model.constructor.modelName}}</span>
   </li>
 
-  {{#each dataview.fields as |field|}}
+  {{#each (reject-by "isAction" dataview.fields) as |field|}}
     <li class="display__{{field.name}}">
       <strong>{{field.name}}</strong>
       <span>{{get model field.name}}</span>

@@ -1,5 +1,6 @@
 import {
   create,
+  isVisible,
   visitable,
   clickable,
   text
@@ -14,5 +15,7 @@ export default create({
   breed: text('li.display__breed'),
   goEdit: clickable('a[href$="edit"]'),
   goChampionships: clickable('a[href$="championships"]'),
-  goOwner: clickable('a.belongs-to')
+  goOwner: clickable('a.belongs-to'),
+  canBeSelected: isVisible('button.action__selectedForAction'),
+  selectForAction: clickable('button.action__selectedForAction')
 });

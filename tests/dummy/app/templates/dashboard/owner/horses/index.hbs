@@ -1,0 +1,22 @@
+<h1 class="page-title">
+  Owner's Horses
+</h1>
+
+<ul class="horses">
+  {{#each model as |horse|}}
+    <li>
+      <span>
+        {{horse.constructor.modelName}}
+      </span>
+      <span>
+        {{horse.name}}
+      </span>
+      <span>
+        {{horse.breed}}
+      </span>
+      {{#link-to "dashboard.horse.index" horse}}
+        Horse Page {{horse.id}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>
