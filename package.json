@@ -1,6 +1,6 @@
 {
   "name": "ember-autox-support",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Utility mixins and helpful tools that facilitate most of the automagic of autox",
   "directories": {
     "doc": "doc",
